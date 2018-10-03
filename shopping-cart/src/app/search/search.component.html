@@ -1,0 +1,10 @@
+<div class="alert alert-success">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="What are you looking for today?" autocomplete="off" [(ngModel)]="searchTerm" (keyup)=onInputChange()>
+    <mat-icon matSuffix>search</mat-icon>
+    <mat-hint>Something like Peanuts</mat-hint>
+  </mat-form-field>
+</div>
+<div *ngIf="searchTerm">
+  <div class="alert alert-warning">{{ searchTerm }}</div>
+</div>
