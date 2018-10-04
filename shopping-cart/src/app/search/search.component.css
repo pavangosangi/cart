@@ -6,3 +6,17 @@
   border-radius: 2.25rem !important;
   margin-top: 100px;
 }
+
+div.resultsHover:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+hr {
+  margin-top: 0.0rem !important;
+  margin-bottom: 0.0rem !important;
+}
+
+.alert-warning hr {
+  border-top-color: rgb(195, 218, 154);
+}
