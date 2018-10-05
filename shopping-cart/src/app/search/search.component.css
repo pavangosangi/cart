@@ -20,3 +20,8 @@ hr {
 .alert-warning hr {
   border-top-color: rgb(195, 218, 154);
 }
+
+button:focus {
+  outline: none !important;
+  border: 0 !important;
+}

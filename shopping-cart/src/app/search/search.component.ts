@@ -15,13 +15,56 @@ import { trigger, transition, animate, keyframes, style, state } from '@angular/
       state('fadeIn', style({
         opacity: 0
       })),
-      transition('fadeOut=>fadeIn',[
-        animate(500)
-      ]),
       transition('fadeIn=>fadeOut',[
-        animate(500)
+        animate('0.75s', keyframes([
+          style({ offset: 0,
+            opacity: 0,
+            transform: 'scale3d(0.3, 0.3, 0.3)'
+          }),
+          style({ offset: .2,
+            opacity: 1,
+            transform: 'scale3d(1.1, 1.1, 1.1)'
+          }),
+          style({ offset: .4,
+            transform: 'scale3d(0.9, 0.9, 0.9)'
+          }),
+          style({ offset: .6,
+            transform: 'scale3d(1.03, 1.03, 1.03)'
+          }),
+          style({ offset: .8,
+            transform: 'scale3d(0.97, 0.97, 0.97)'
+          }),
+          style({ offset: 1,
+            transform: 'scale3d(1, 1, 1)'
+          }),
+        ]))
+      ]),
+      transition('fadeOut=>fadeIn',[
+        animate('0.75s', keyframes([
+          style({ offset: 0,
+            transform: 'scale3d(1, 1, 1)'
+          }),
+          style({ offset: .2,
+            transform: 'scale3d(0.97, 0.97, 0.97)'
+          }),
+          style({ offset: .4,
+            transform: 'scale3d(1.03, 1.03, 1.03)'
+          }),
+          style({ offset: .6,
+            transform: 'scale3d(0.9, 0.9, 0.9)'
+          }),
+          style({ offset: .8,
+            opacity: 1,
+            transform: 'scale3d(1.1, 1.1, 1.1)'
+          }),
+          style({ offset: 1,
+            opacity: 0,
+            transform: 'scale3d(0.3, 0.3, 0.3)'
+          })
+        ]))
       ])
     ]),
+
     trigger('fade',[
       state('oldplace',style({
         opacity:0
