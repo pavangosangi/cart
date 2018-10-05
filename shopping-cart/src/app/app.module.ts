@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MatInputModule, MatFormFieldModule, MatIconModule } from '@angular/material';
+import { MatInputModule, MatFormFieldModule, MatIconModule, MatButtonModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
@@ -25,6 +25,7 @@ import { SearchComponent } from './search/search.component';
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
+    MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([

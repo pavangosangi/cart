@@ -1,19 +1,62 @@
 import { Component, OnInit } from '@angular/core';
 import { forEach } from '@angular/router/src/utils/collection';
 import { Router } from '@angular/router';
-import { trigger, transition, animate, keyframes, style } from '@angular/animations';
+import { trigger, transition, animate, keyframes, style, state } from '@angular/animations';
 
 @Component({
   selector: 'search-items',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
   animations: [
-    trigger('fade',[
-      transition('',[
-        style({opacity:0}),
-        animate(2000)
+    trigger('fadeSearchButton',[
+      state('fadeOut', style({
+        opacity: 1
+      })),
+      state('fadeIn', style({
+        opacity: 0
+      })),
+      transition('fadeOut=>fadeIn',[
+        animate(500)
       ]),
-      transition('',[
+      transition('fadeIn=>fadeOut',[
+        animate(500)
+      ])
+    ]),
+    trigger('fade',[
+      state('oldplace',style({
+        opacity:0
+      })),
+      
+      state('newplace',style({
+        opacity:1
+      })),
+
+      transition('oldplace=>newplace',[
+        animate('0.5s cubic-bezier(0.215, 0.61, 0.355, 1)', keyframes([
+          style({ offset: 0,
+            opacity: 0,
+            transform: 'translateX(-200%)'
+          }),
+          style({ offset: .6,
+            opacity: 1,
+            transform: 'translateX(25px)'
+          }),
+          style({ offset: .75,
+            opacity: 1,
+            transform: 'translateX(-10px)'
+          }),
+          style({ offset: .9,
+            opacity: 1,
+            transform: 'translateX(5px)'
+          }),
+          style({ 
+            offset: 1,
+            opacity: 1,
+            transform: 'translateX(0px)'
+          })
+        ]))
+      ]),
+      transition('newplace=>oldplace',[
         animate('0.5s ease-out', keyframes([
           style({ 
             offset: .2,
@@ -23,7 +66,7 @@ import { trigger, transition, animate, keyframes, style } from '@angular/animati
           style({ 
             offset: 1,
             opacity: 0,
-            transform: 'translateX(-100%)'
+            transform: 'translateX(-200%)'
           }),
         ]))
       ])
@@ -33,6 +76,8 @@ import { trigger, transition, animate, keyframes, style } from '@angular/animati
 export class SearchComponent implements OnInit {
   searchTerm:string = "";
   searchResults = [];
+  atOldPlace:boolean=false;
+  isSearchButtonFadeOut:boolean = false;
   constructor(private router:Router) { }
 
   ngOnInit() {
@@ -58,9 +103,24 @@ export class SearchComponent implements OnInit {
   }
 
   redirect(searchResult) {
-    this.searchTerm = searchResult.tag;
+    this.searchTerm = "";
     this.searchResults = [];
+    this.togglePlace();
+    this.toggleSearchButton();
     //this.router.navigate(['/getItem/'+itemId]);
+  }
+
+  togglePlace() {
+    this.atOldPlace = !this.atOldPlace;
+  }
+
+  toggleSearchButton() {
+    this.isSearchButtonFadeOut = !this.isSearchButtonFadeOut;
+  }
+
+  switchBoth() {
+    this.togglePlace();
+    this.toggleSearchButton();
   }
 
 

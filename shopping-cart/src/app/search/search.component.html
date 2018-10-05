@@ -1,4 +1,8 @@
-<div @fade class="alert alert-warning">
+<button [@fadeSearchButton]="isSearchButtonFadeOut ? 'fadeOut': 'fadeIn'" mat-mini-fab color="accent" (click)="switchBoth()">
+  <mat-icon>search</mat-icon>
+</button>
+
+<div [@fade]="atOldPlace ? 'oldplace' : 'newplace'" class="alert alert-warning" >
   <mat-form-field class="example-full-width">
     <input matInput placeholder="What are you looking for today?" autocomplete="off" [(ngModel)]="searchTerm" (keyup)=onInputChange()>
     <mat-icon matSuffix>search</mat-icon>
