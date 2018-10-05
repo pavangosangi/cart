@@ -25,3 +25,7 @@ button:focus {
   outline: none !important;
   border: 0 !important;
 }
+
+button.searchButton {
+  position: sticky;
+}
