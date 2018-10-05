@@ -121,6 +121,7 @@ export class SearchComponent implements OnInit {
   searchResults = [];
   atOldPlace:boolean=false;
   isSearchButtonFadeOut:boolean = false;
+  isSearchButtonDisabled:boolean = true;
   constructor(private router:Router) { }
 
   ngOnInit() {
@@ -150,6 +151,7 @@ export class SearchComponent implements OnInit {
     this.searchResults = [];
     this.togglePlace();
     this.toggleSearchButton();
+    this.toggleButton();
     //this.router.navigate(['/getItem/'+itemId]);
   }
 
@@ -161,9 +163,14 @@ export class SearchComponent implements OnInit {
     this.isSearchButtonFadeOut = !this.isSearchButtonFadeOut;
   }
 
+  toggleButton() {
+    this.isSearchButtonDisabled = !this.isSearchButtonDisabled;
+  }
+
   switchBoth() {
     this.togglePlace();
     this.toggleSearchButton();
+    this.toggleButton();
   }
 
 

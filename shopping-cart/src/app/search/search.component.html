@@ -1,4 +1,4 @@
-<button [@fadeSearchButton]="isSearchButtonFadeOut ? 'fadeOut': 'fadeIn'" mat-mini-fab color="accent" (click)="switchBoth()">
+<button [@fadeSearchButton]="isSearchButtonFadeOut ? 'fadeOut': 'fadeIn'" mat-mini-fab color="accent" (click)="switchBoth()" [disabled]="isSearchButtonDisabled">
   <mat-icon>search</mat-icon>
 </button>
 
