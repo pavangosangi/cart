@@ -1,17 +1,42 @@
-<button [@fadeSearchButton]="isSearchButtonFadeOut ? 'fadeOut': 'fadeIn'" class="searchButton" mat-mini-fab color="accent" (click)="switchBoth()" [disabled]="isSearchButtonDisabled">
-  <mat-icon>search</mat-icon>
-</button>
-
-<div [@fade]="atOldPlace ? 'oldplace' : 'newplace'" class="alert alert-warning" >
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="What are you looking for today?" autocomplete="off" [(ngModel)]="searchTerm" (keyup)=onInputChange()>
-    <mat-icon matSuffix>search</mat-icon>
-    <mat-hint>Something like Peanuts</mat-hint>
-  </mat-form-field>
-  <div *ngIf=searchResults>
-    <div *ngFor="let searchResult of searchResults">
-      <div class="resultsHover" (click)="redirect(searchResult)" >{{ searchResult.tag }}</div>
-      <hr>
+  <div class="row">
+    <div class="col">
+        <button [@fadeSearchButton]="isSearchButtonFadeOut ? 'fadeOut': 'fadeIn'" class="searchButton" mat-fab color="accent" (click)="switchBoth()" [disabled]="isSearchButtonDisabled">
+          <mat-icon>search</mat-icon>
+        </button>
+    </div>
+    <div class="col">
     </div>
   </div>
-</div>
+
+  <div class="row">
+    <div class="col">
+    </div>
+    <div class="col-7 alert alert-warning" [@fade]="atOldPlace ? 'oldplace' : 'newplace'">
+      <div class="row">
+        <div class="col">
+          <div>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="What are you looking for today?" autocomplete="off" [(ngModel)]="searchTerm" (keyup)=onInputChange()>
+              <mat-icon matSuffix>search</mat-icon>
+              <mat-hint>Type Something like "Peanuts"</mat-hint>
+            </mat-form-field>
+            <div *ngIf=searchResults>
+              <div *ngFor="let searchResult of searchResults">
+                <div class="resultsHover" (click)="redirect(searchResult)" >{{ searchResult.tag }}</div>
+                <hr>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col"></div>
+        <div class="col">
+          <button mat-raised-button color="accent" (click)="redirect(searchResult)" >I just want to browse around.</button>
+        </div>
+        <div class="col"></div>
+      </div>
+    </div>
+    <div class="col">
+    </div>
+  </div>

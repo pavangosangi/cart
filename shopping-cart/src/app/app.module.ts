@@ -6,20 +6,25 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { HttpModule } from '@angular/Http';
 
 import { AppComponent } from './app.component';
 import { BootstrapNavbarComponent } from './bootstrap-navbar/bootstrap-navbar.component';
 import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
+import { SearchService } from './services/search.service';
+import { SingleitemComponent } from './singleitem/singleitem.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BootstrapNavbarComponent,
     HomeComponent,
-    SearchComponent
+    SearchComponent,
+    SingleitemComponent
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatInputModule,
@@ -30,10 +35,11 @@ import { SearchComponent } from './search/search.component';
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent},
-      { path: 'search', component: SearchComponent}
+      { path: 'search', component: SearchComponent},
+      { path: 'singleitem', component: SingleitemComponent}
     ])
   ],
-  providers: [],
+  providers: [SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

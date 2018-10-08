@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { forEach } from '@angular/router/src/utils/collection';
 import { Router } from '@angular/router';
 import { trigger, transition, animate, keyframes, style, state } from '@angular/animations';
+import { SearchService } from '../services/search.service';
 
 @Component({
   selector: 'search-items',
@@ -122,9 +123,13 @@ export class SearchComponent implements OnInit {
   atOldPlace:boolean=false;
   isSearchButtonFadeOut:boolean = false;
   isSearchButtonDisabled:boolean = true;
-  constructor(private router:Router) { }
+  constructor(private router:Router, private service:SearchService) { }
 
   ngOnInit() {
+    //this.service.getSearchResults()
+    //  .subscribe(response=> {
+    //    this.posts = response.json();
+    //  })
   }
 
   onInputChange() {
@@ -132,18 +137,7 @@ export class SearchComponent implements OnInit {
       this.searchResults = [];
       return;
     }
-    this.searchResults = [
-      {tag:"peas", itemId: 1},
-      {tag:"peanuts", itemId: 2},
-      {tag:"roasted peanuts", itemId: 3},
-      {tag:"pallilu", itemId: 2},
-      {tag:"pea nuts", itemId: 2},
-      {tag:"salted peanuts", itemId: 6},
-      {tag:"peanut butter", itemId: 7},
-      {tag:"palli pachadi", itemId: 8},
-      {tag:"pelli patti", itemId: 9},
-      {tag:"peanut cake", itemId: 10}
-    ];
+    this.searchResults = this.service.getSearchResults(this.searchTerm);
   }
 
   redirect(searchResult) {
@@ -152,7 +146,7 @@ export class SearchComponent implements OnInit {
     this.togglePlace();
     this.toggleSearchButton();
     this.toggleButton();
-    //this.router.navigate(['/getItem/'+itemId]);
+    this.router.navigate(['/'],{ queryParams: {itemId:searchResult.itemId}});
   }
 
   togglePlace() {
