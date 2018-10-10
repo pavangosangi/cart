@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MatInputModule, MatFormFieldModule, MatIconModule, MatButtonModule } from '@angular/material';
+import { MatInputModule, MatFormFieldModule, MatIconModule, MatButtonModule, MatBadgeModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
@@ -31,12 +31,13 @@ import { SingleitemComponent } from './singleitem/singleitem.component';
     MatFormFieldModule,
     MatIconModule,
     MatButtonModule,
+    MatBadgeModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent},
-      { path: 'search', component: SearchComponent},
-      { path: 'singleitem', component: SingleitemComponent}
+      { path: '', component: HomeComponent, data: {title: 'home', depth: 1}},
+      { path: 'search', component: SearchComponent, data: {title: 'search', depth: 1}},
+      { path: 'singleitem', component: SingleitemComponent, data: {title: 'singleItem', depth: 2}}
     ])
   ],
   providers: [SearchService],

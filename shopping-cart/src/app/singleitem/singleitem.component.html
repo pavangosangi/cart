@@ -1,3 +1,77 @@
-<button [@fadeSearchButton]="isSearchButtonFadeOut ? 'fadeOut': 'fadeIn'" class="searchButton" mat-fab color="accent" (click)="switchBoth()" [disabled]="isSearchButtonDisabled">
-    <mat-icon>search</mat-icon>
-  </button>
+<div class="row">
+  <span>&nbsp;</span>           
+</div>
+<div class="row">
+  <div class="col">
+    <div class="d-flex flex-xl-column">
+      <div class="p-2">
+        <button mat-fab color="accent" (click)="backToSearch()">
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+      <div class="p-2">
+        <button mat-fab color="primary" [@bounce]="isCartBounceOut ? 'bounceOut': 'bounceIn'">
+            <mat-icon [matBadge]="cartNumber" matBadgeColor="warn" matBadgeOverlap=false >shopping_cart</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="card border-dark mb-3">
+      <div class="card-header">
+        <h5 class="card-title">{{ product.productTitle }}</h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg">
+            <div class="d-flex flex-xl-column">
+              <div class="p-5">
+                <h5 class="card-title">{{ product.productTitle }}</h5>
+                <p class="card-text">{{ product.productDescription }} </p>
+              </div>
+              <div class="p-2">
+                <p #itemPrice>Price per lb: {{ product.price | currency }}</p>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Quantity" autocomplete="off" >
+                  <mat-icon matSuffix>control_point</mat-icon>
+                  <mat-hint>In Lbs</mat-hint>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg">
+            <div class="card" style="width: 30rem;">
+              <img class="card-img-top" [src]="product.productImgUrl">
+              <div class="card-body">
+                <h5 class="card-title">Tags</h5>
+                <span *ngFor="let tag of product.productTags; let isLast = last">
+                  <span class="badge badge-pill badge-warning">{{ tag }}</span>
+                  <span>&nbsp;</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+              <button mat-raised-button color="primary" (click)="addToCart()">
+                Add to Cart
+                <mat-icon>shopping_cart</mat-icon>
+              </button>
+          </div>
+          <div class="col">
+              <button mat-raised-button color="warn">
+                Buy Now
+                <mat-icon>play_arrow</mat-icon>
+              </button>
+          </div>
+          <div class="col"></div>
+          <div class="col"></div>
+          <div class="col"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+  </div>
+</div>

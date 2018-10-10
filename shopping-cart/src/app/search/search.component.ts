@@ -146,7 +146,7 @@ export class SearchComponent implements OnInit {
     this.togglePlace();
     this.toggleSearchButton();
     this.toggleButton();
-    this.router.navigate(['/'],{ queryParams: {itemId:searchResult.itemId}});
+    this.router.navigate(['/singleitem']);
   }
 
   togglePlace() {
