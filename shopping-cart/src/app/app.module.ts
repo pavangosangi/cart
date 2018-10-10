@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
 import { SearchService } from './services/search.service';
 import { SingleitemComponent } from './singleitem/singleitem.component';
+import { MultipleitemsComponent } from './multipleitems/multipleitems.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SingleitemComponent } from './singleitem/singleitem.component';
     BootstrapNavbarComponent,
     HomeComponent,
     SearchComponent,
-    SingleitemComponent
+    SingleitemComponent,
+    MultipleitemsComponent
   ],
   imports: [
     HttpModule,
@@ -37,7 +39,8 @@ import { SingleitemComponent } from './singleitem/singleitem.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, data: {title: 'home', depth: 1}},
       { path: 'search', component: SearchComponent, data: {title: 'search', depth: 1}},
-      { path: 'singleitem', component: SingleitemComponent, data: {title: 'singleItem', depth: 2}}
+      { path: 'singleitem', component: SingleitemComponent, data: {title: 'singleItem', depth: 2}},
+      { path: 'multipleitem', component: MultipleitemsComponent, data: {title: 'multipleItem', depth: 2}}
     ])
   ],
   providers: [SearchService],

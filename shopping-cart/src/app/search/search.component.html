@@ -22,7 +22,7 @@
             </mat-form-field>
             <div *ngIf=searchResults>
               <div *ngFor="let searchResult of searchResults">
-                <div class="resultsHover" (click)="redirect(searchResult)" >{{ searchResult.tag }}</div>
+                <div class="resultsHover" (click)="redirectSingleItem(searchResult)" >{{ searchResult.tag }}</div>
                 <hr>
               </div>
             </div>
@@ -32,7 +32,7 @@
       <div class="row">
         <div class="col"></div>
         <div class="col">
-          <button mat-raised-button color="accent" (click)="redirect(searchResult)" >I just want to browse around.</button>
+          <button mat-raised-button color="accent" (click)="redirectMultipleItem(searchResult)" >I just want to browse around.</button>
         </div>
         <div class="col"></div>
       </div>

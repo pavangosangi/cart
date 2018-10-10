@@ -140,13 +140,22 @@ export class SearchComponent implements OnInit {
     this.searchResults = this.service.getSearchResults(this.searchTerm);
   }
 
-  redirect(searchResult) {
+  redirectSingleItem(searchResult) {
     this.searchTerm = "";
     this.searchResults = [];
     this.togglePlace();
     this.toggleSearchButton();
     this.toggleButton();
     this.router.navigate(['/singleitem']);
+  }
+
+  redirectMultipleItem(searchResult) {
+    this.searchTerm = "";
+    this.searchResults = [];
+    this.togglePlace();
+    this.toggleSearchButton();
+    this.toggleButton();
+    this.router.navigate(['/multipleitem']);
   }
 
   togglePlace() {
