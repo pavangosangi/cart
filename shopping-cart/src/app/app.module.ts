@@ -15,6 +15,7 @@ import { SearchComponent } from './search/search.component';
 import { SearchService } from './services/search.service';
 import { SingleitemComponent } from './singleitem/singleitem.component';
 import { MultipleitemsComponent } from './multipleitems/multipleitems.component';
+import { AddproductComponent } from './addproduct/addproduct.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MultipleitemsComponent } from './multipleitems/multipleitems.component'
     HomeComponent,
     SearchComponent,
     SingleitemComponent,
-    MultipleitemsComponent
+    MultipleitemsComponent,
+    AddproductComponent
   ],
   imports: [
     HttpModule,
@@ -40,7 +42,8 @@ import { MultipleitemsComponent } from './multipleitems/multipleitems.component'
       { path: '', component: HomeComponent, data: {title: 'home', depth: 1}},
       { path: 'search', component: SearchComponent, data: {title: 'search', depth: 1}},
       { path: 'singleitem', component: SingleitemComponent, data: {title: 'singleItem', depth: 2}},
-      { path: 'multipleitem', component: MultipleitemsComponent, data: {title: 'multipleItem', depth: 2}}
+      { path: 'multipleitem', component: MultipleitemsComponent, data: {title: 'multipleItem', depth: 2}},
+      { path: 'addproduct', component: AddproductComponent, data: {title: 'addproduct', depth: 2}}
     ])
   ],
   providers: [SearchService],

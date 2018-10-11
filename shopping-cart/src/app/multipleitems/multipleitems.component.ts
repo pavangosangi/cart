@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-multipleitems',
@@ -9,11 +10,19 @@ import { Router } from '@angular/router';
 export class MultipleitemsComponent implements OnInit {
   product = new Product();
   products = [this.product, this.product, this.product, this.product, this.product, this.product, this.product,this.product, this.product];
-  categories = [{name: "Bakery and Bread", key: 1}, {name: "Oils", key: 1},{name: "Pasta and Rice", key: 1},{name: "Cereals", key: 1},{name: "Frozen Foods", key: 1}]
-  constructor(private router:Router) { }
+  categories = [{name: "Bakery and Bread", key: "1"}, {name: "Oils", key: "2"},{name: "Pasta and Rice", key: "3"},{name: "Cereals", key: "4"},{name: "Frozen Foods", key: "5"}]
+  category:string;
+  constructor(private router:Router, route:ActivatedRoute) {
+    route.queryParamMap.subscribe(param=>{
+      this.category = param.get('category');
+
+    })
+   }
 
   ngOnInit() {
   }
+
+  
 
 }
 
