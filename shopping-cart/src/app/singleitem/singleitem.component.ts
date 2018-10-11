@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { trigger, transition, animate, keyframes, style, state, group, query } from '@angular/animations';  
 
@@ -67,7 +67,7 @@ import { trigger, transition, animate, keyframes, style, state, group, query } f
 })
 export class SingleitemComponent implements OnInit {
   product = new Product();
-  cartNumber = 0;
+  @Input() cartNumber;
   isCartBounceOut:boolean;
   constructor(private router:Router) { }
 

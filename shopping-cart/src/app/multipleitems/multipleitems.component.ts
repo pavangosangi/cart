@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class MultipleitemsComponent implements OnInit {
   product = new Product();
   products = [this.product, this.product, this.product, this.product, this.product, this.product, this.product,this.product, this.product];
+  categories = [{name: "Bakery and Bread", key: 1}, {name: "Oils", key: 1},{name: "Pasta and Rice", key: 1},{name: "Cereals", key: 1},{name: "Frozen Foods", key: 1}]
   constructor(private router:Router) { }
 
   ngOnInit() {
