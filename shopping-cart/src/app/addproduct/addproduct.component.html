@@ -22,10 +22,7 @@
               <input matInput placeholder="Price" autocomplete="off" formControlName="productPrice" #price>
               <mat-icon matPrefix>attach_money</mat-icon>
             </mat-form-field>
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="ImgUrl" autocomplete="off" formControlName="productImgUrl" #productImgUrl>
-              <mat-icon matPrefix>add_a_photo</mat-icon>
-            </mat-form-field>
+            <input type="file" class="btn btn-primary" (change)="onFileSelected($event)">
           </form>
       </div>
       <div class="card-footer">
@@ -41,7 +38,7 @@
       <div class="card-header"><h5 class="card-title">Preview</h5></div>
       <div class="card-body">
           <div class="card">
-              <img class="card-img-top" [src]="productImgUrl.value">
+              <!-- <img class="card-img-top" [src]="productImgUrl.value"> -->
               <div class="card-body">
                   <h5 class="card-title">{{ title.value }}</h5>
                   <p class="card-text">{{ productDescription.value }}</p>
