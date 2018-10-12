@@ -1,24 +1,65 @@
 <div class="row">
+  <div class="col"><span>&nbsp;</span></div>
+</div>
+<div class="row">
   <div class="col-2">
   
   </div>
   <div class="col-5">
-    <form [formGroup]="form">
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Title" autocomplete="off" formControlName="productTitle">
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Description" autocomplete="off" formControlName="productDescription">
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Price" autocomplete="off" formControlName="productPrice">
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="ImgUrl" autocomplete="off" formControlName="productImgUrl">
-      </mat-form-field>
-    </form>
+    <div class="card">
+      <div class="card-header"><h5 class="card-title">Add a Product</h5></div>
+      <div class="card-body">
+        <form [formGroup]="form">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Title" autocomplete="off" formControlName="productTitle" #title>
+              <mat-icon matPrefix>title</mat-icon>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Description" autocomplete="off" formControlName="productDescription" #productDescription>
+              <mat-icon matPrefix>description</mat-icon>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Price" autocomplete="off" formControlName="productPrice" #price>
+              <mat-icon matPrefix>attach_money</mat-icon>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="ImgUrl" autocomplete="off" formControlName="productImgUrl" #productImgUrl>
+              <mat-icon matPrefix>add_a_photo</mat-icon>
+            </mat-form-field>
+          </form>
+      </div>
+      <div class="card-footer">
+          <button mat-raised-button color="accent" class="btn-block">
+              Add Product
+            <mat-icon>add_circle</mat-icon>
+          </button>
+      </div>
+    </div>
   </div>
   <div class="col-5">
-
+    <div class="card">
+      <div class="card-header"><h5 class="card-title">Preview</h5></div>
+      <div class="card-body">
+          <div class="card">
+              <img class="card-img-top" [src]="productImgUrl.value">
+              <div class="card-body">
+                  <h5 class="card-title">{{ title.value }}</h5>
+                  <p class="card-text">{{ productDescription.value }}</p>
+                  <p class="card-text">Price: {{ price.value | currency}}</p>
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Quantity" autocomplete="off" >
+                    <mat-icon matSuffix>control_point</mat-icon>
+                    <mat-hint>In Lbs</mat-hint>
+                  </mat-form-field>
+              </div>
+              <div class="card-footer">
+                  <button mat-raised-button color="accent" class="btn-block">
+                      Add to Cart
+                    <mat-icon>shopping_cart</mat-icon>
+                  </button>
+              </div>
+            </div>
+      </div>
+    </div>
   </div>
 </div>

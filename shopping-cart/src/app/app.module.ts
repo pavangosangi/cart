@@ -16,6 +16,7 @@ import { SearchService } from './services/search.service';
 import { SingleitemComponent } from './singleitem/singleitem.component';
 import { MultipleitemsComponent } from './multipleitems/multipleitems.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AddproductComponent } from './addproduct/addproduct.component';
     MatBadgeModule,
     FormsModule,
     ReactiveFormsModule,
+    NgbModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, data: {title: 'home', depth: 1}},
       { path: 'search', component: SearchComponent, data: {title: 'search', depth: 1}},
